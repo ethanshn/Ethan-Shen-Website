@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ethan Shen | Electrical Engineering Student</title>
+  <meta name="description" content="Personal portfolio of Ethan Shen, a first-year Electrical Engineering student at the University of Michigan interested in hardware design, embedded systems, and consulting.">
+  <style>
+    :root {
+      --bg: #1b1e1d;
+      --surface: #252a29;
+      --surface-2: #2e3534;
+      --border: #3a4341;
+      --text: #e9f0ed;
+      --muted: #a9b9b3;
+      --jade: #4fd1a5;
+      --jade-dark: #1f8f6c;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+
+    a { color: var(--jade); }
+    a:hover { color: #7fe3c0; }
+
+    a:focus-visible {
+      outline: 3px solid var(--jade);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 0.5rem;
+      background: var(--jade);
+      color: #0f1413;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      z-index: 100;
+    }
+    .skip-link:focus { left: 0.5rem; }
+
+    /* ---------- Header / navigation ---------- */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(27, 30, 29, 0.95);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem 1.5rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .logo span { color: var(--jade); }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1.1rem;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 0.25rem 0;
+      border-bottom: 2px solid transparent;
+    }
+    nav a:hover {
+      color: var(--text);
+      border-bottom-color: var(--jade);
+    }
+
+    /* ---------- Layout ---------- */
+    main { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
+
+    section { padding: 3.5rem 0 1rem; }
+
+    h1, h2, h3 { line-height: 1.2; margin: 0 0 0.75rem; }
+
+    h2 {
+      font-size: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    h2::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    p { margin: 0 0 1rem; }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 4rem 0 2rem; }
+
+    .eyebrow {
+      color: var(--jade);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.25rem, 7vw, 3.75rem);
+      margin-bottom: 1rem;
+    }
+
+    .hero .lead {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 40rem;
+    }
+
+    .tags {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0 1.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tags li {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.25rem 0.9rem;
+      font-size: 0.95rem;
+    }
+
+    .button-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+    .button {
+      display: inline-block;
+      padding: 0.7rem 1.3rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid var(--jade);
+    }
+    .button.primary { background: var(--jade); color: #0f1413; }
+    .button.primary:hover { background: #7fe3c0; border-color: #7fe3c0; color: #0f1413; }
+    .button.secondary { background: transparent; color: var(--jade); }
+    .button.secondary:hover { background: var(--surface-2); }
+
+    /* ---------- Cards ---------- */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--jade-dark);
+      border-radius: 10px;
+      padding: 1.4rem 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .card h3 { font-size: 1.2rem; }
+    .card .role { color: var(--jade); font-weight: 600; margin-bottom: 0.5rem; }
+    .card ul { margin: 0.5rem 0 0; padding-left: 1.2rem; }
+    .card li { margin-bottom: 0.5rem; }
+    .card p:last-child { margin-bottom: 0; }
+
+    /* ---------- Skills ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+    .grid .card { margin-bottom: 0; }
+
+    /* ---------- Contact ---------- */
+    .contact-list {
+      list-style: none;
+      margin: 0 0 1.5rem;
+      padding: 0;
+    }
+    .contact-list li { margin-bottom: 0.6rem; }
+    .contact-list strong { color: var(--muted); font-weight: 600; }
+    .contact-list a { overflow-wrap: anywhere; }
+
+    footer {
+      max-width: 960px;
+      margin: 3rem auto 0;
+      padding: 1.5rem 1.25rem 2.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 560px) {
+      body { font-size: 1rem; }
+      section { padding-top: 2.75rem; }
+      h2 { font-size: 1.5rem; }
+      .card { padding: 1.1rem 1.1rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="#top">Ethan <span>Shen</span></a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div id="top" class="hero">
+      <p class="eyebrow">University of Michigan &middot; Electrical Engineering</p>
+      <h1>Hi, I'm Ethan Shen.</h1>
+      <p class="lead">I'm a first-year Electrical Engineering student who likes working where hardware and software meet. Right now I'm exploring hardware design, embedded systems, and consulting.</p>
+      <ul class="tags" aria-label="Interests">
+        <li>Hardware design</li>
+        <li>Embedded systems</li>
+        <li>Consulting</li>
+      </ul>
+      <div class="button-row">
+        <a class="button primary" href="#projects">See my projects</a>
+        <a class="button secondary" href="#contact">Get in touch</a>
+      </div>
+    </div>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>I'm a first-year Electrical Engineering student at the University of Michigan College of Engineering. I'm especially interested in the space between hardware and software, like building a circuit and then writing the code that makes it actually do something.</p>
+      <p>Outside of class, I like running, swimming, rock climbing, and watching movies.</p>
+    </section>
+
+    <section id="experience">
+      <h2>Experience &amp; Involvement</h2>
+
+      <div class="card">
+        <h3>Boys Swim and Dive Team Captain</h3>
+        <p class="role">Novi High School</p>
+      </div>
+
+      <div class="card">
+        <h3>Member</h3>
+        <p class="role">Iota Omega Epsilon</p>
+        <p>A professional STEM and business fraternity.</p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <article class="card">
+        <h3>Fingerprint Authentication System</h3>
+        <p>I soldered a Raspberry Pi 5 to an optical fingerprint sensor to build a hardware-based biometric authentication system that can store up to 1,000 unique fingerprints.</p>
+        <ul>
+          <li>Wrote software to enroll, delete, save, and verify fingerprint templates for user authentication.</li>
+          <li>Integrated a fingerprint-matching library to compare scanned fingerprints against ones that were already enrolled.</li>
+          <li>Added features that apply "salt" to the prints to make them harder to read, to simulate real-world authentication.</li>
+          <li>Researched machine learning techniques, including convolutional neural networks for authentication and the ORB feature detection algorithm for finding and marking significant points on fingerprints.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Other Coding Projects</h3>
+        <p>Smaller programs I've written while learning:</p>
+        <ul>
+          <li>A machine learning algorithm</li>
+          <li>A Euchre card game</li>
+          <li>Statistics programs</li>
+          <li>Image resizing</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Hardware</h3>
+          <ul>
+            <li>Designing schematics and PCB layouts for low-voltage electrical systems</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Programming</h3>
+          <ul>
+            <li>Java</li>
+            <li>C++</li>
+            <li>Python</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Math &amp; Business</h3>
+          <ul>
+            <li>Calculus-based mathematical modeling</li>
+            <li>Business-to-business sales</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Languages</h3>
+          <ul>
+            <li>Chinese (speaking)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>I'm always happy to connect. The best way to reach me is by email or LinkedIn.</p>
+      <ul class="contact-list">
+        <li><strong>School email:</strong> <a href="mailto:ethanshn@umich.edu">ethanshn@umich.edu</a></li>
+        <li><strong>Personal email:</strong> <a href="mailto:e10blue494@gmail.com">e10blue494@gmail.com</a></li>
+      </ul>
+      <div class="button-row">
+        <a class="button primary" href="https://www.linkedin.com/in/ethanshenumich/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="button secondary" href="https://github.com/ethanshn" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; Ethan Shen. Built by hand with plain HTML and CSS.</p>
+  </footer>
+</body>
+</html>
